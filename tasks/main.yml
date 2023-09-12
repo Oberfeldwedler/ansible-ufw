@@ -2,8 +2,16 @@
 
 - import_tasks: install.yml
 
-- import_tasks: service.yml
+- name: Configure ufw
+  block:
+    - import_tasks: reset.yml
 
-- import_tasks: config.yml
+    - import_tasks: service.yml
 
-- import_tasks: manage.yml
+    - import_tasks: config.yml
+
+    - import_tasks: manage.yml
+
+  always:
+    - name: Grant ssh access
+      import_tasks: ssh.yml

@@ -1,0 +1,6 @@
+---
+
+- name: Grant ssh access
+  ufw:
+    rule: allow
+    to_port: "{{ ssh_port }}"
